@@ -14,6 +14,11 @@ function getData(link, callback, https) {
 }
 
 exports.commands = {
+    credits: 'about',
+    about: function() {
+        this.can("set");
+        this.send("Bot made in node.js for **Anime and Manga** room by **Nui** and **czn**.");
+    },
     seen: function(target, room, user) {
         if(!target) return this.parse("/help seen");
         this.can("set");
@@ -28,13 +33,15 @@ exports.commands = {
         let startTime = Date.now() - (process.uptime() * 1000);
         this.send("The bot's uptime is: " + Tools.getTimeAgo(startTime));
     },
+    botguide: 'help',
+    guide: 'help',
     help: function(target, room, user) {
         if (!target) return this.parse("/guide");
         target = target.toLowerCase();
         this.can("say");
         if (!Tools.helpEntries[target]) return false;
         Tools.helpEntries[target].forEach(function(e) {
-            this.send(e.replace(/^\//i, room ? room.commandCharacter[0] : Config.defaultCharacter));
+            this.send('');
         }.bind(this));
     },
     guide: function(target, room, user) {
@@ -44,13 +51,13 @@ exports.commands = {
             return Tools.helpEntries[entry].join("\n").replace(/^\//i, useCommandCharacter).replace(/\n\//i, useCommandCharacter);
         }.bind(this)).join("\n\n");
         Tools.uploadToHastebin("Bot Commands: \n\n" + hastebin, function(link) {
-            this.send("Bot Guide: " + link);
+            this.send("");
         }.bind(this));
 
     },
     git: function(target, room, user) {
         this.can("set");
-        this.send(Monitor.username + "'s github repository: " + "https://github.com/sparkychild/FoxieBot");
+        this.send("");
     },
     usage: function(target, room, user) {
         let baseLink = "http://www.smogon.com/stats/2016-01/";
