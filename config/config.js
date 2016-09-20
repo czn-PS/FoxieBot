@@ -15,7 +15,7 @@ exports.bot = {
 };
 
 // this is the command character used in PMs and public rooms that do not specify what command character they want
-exports.defaultCharacter = ["+"];
+exports.defaultCharacter = ["."];
 
 // minimum rank for using a command unless specified.
 exports.defaultRank = "@";
