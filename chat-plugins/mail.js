@@ -42,6 +42,7 @@ Plugins.mail = {
 }
 
 exports.commands = {
+    tell: 'mail',
     mail: function(target, room, user) {
         if (!target) return this.parse("/help mail");
         let message = target.split(",").slice(1).join(",");
@@ -52,9 +53,9 @@ exports.commands = {
             sendMail(user, this.targetUser.userid || this.targetUser, message.trim());
         }
         catch (e) {
-            user.sendTo("ERROR: unable to send mail.");
+            this.send("ERROR: unable to send mail.");
         }
-        user.sendTo("Swish, mail has been sent to " + (this.targetUser.name || this.targetUser));
+        this.send("Will tell " + (this.targetUser.name || this.targetUser) + " the next time I see them!");
     },
     checkmail: function(target, room, user) {
         let mail = receiveMail(user);
