@@ -57,7 +57,7 @@ exports.commands = {
     },
     git: function(target, room, user) {
         this.can("set");
-        this.send("");
+        this.send(Monitor.username + " forked from: https://github.com/sparkychild/FoxieBot");
     },
     usage: function(target, room, user) {
         let baseLink = "http://www.smogon.com/stats/2016-01/";
