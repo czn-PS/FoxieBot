@@ -55,7 +55,7 @@ exports.commands = {
         catch (e) {
             this.send("ERROR: unable to send mail.");
         }
-        this.send("Will tell " + (this.targetUser.name || this.targetUser) + " the next time I see them!");
+        this.send("I will tell " + (this.targetUser.name || this.targetUser) + " the next time I see them!");
     },
     checkmail: function(target, room, user) {
         let mail = receiveMail(user);
